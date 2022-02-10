@@ -24,7 +24,6 @@ services:
 
   worker:
     image: ilosaurus/worker:latest
-    build: ./worker
     depends_on:
       - redis
       - db
@@ -33,7 +32,6 @@ services:
 
   vote:
     image: ilosaurus/vote:latest
-    build: ./vote
     ports:
       - 5101:80
     depends_on:
@@ -43,7 +41,6 @@ services:
 
   result:
     image: ilosaurus/result:latest
-    build: ./result
     ports:
       - 5102:4000
     depends_on:
