@@ -204,6 +204,7 @@ pipeline {
         }
         steps{
             echo 'Deploy instavote app with docker compose'
+            sh "chmod +x deploy.sh" 
             sh "scp -o StrictHostKeyChecking=no docker-compose.yml root@10.10.81.151:/root" 
             sh "scp -o StrictHostKeyChecking=no deploy.sh root@10.10.81.151:/root" 
             sh 'ssh -o StrictHostKeyChecking=no root@10.10.81.151 "bash deploy.sh" '
