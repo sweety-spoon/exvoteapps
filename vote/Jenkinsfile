@@ -17,7 +17,6 @@ pipeline {
       steps{
         echo 'Compiling vote app'
         dir('vote'){
-          sleep 60
           sh 'pip install --upgrade pip'
           sh 'pip install -r requirements.txt'
         }
@@ -37,7 +36,6 @@ pipeline {
       steps{
         echo 'Running Unit Test on vote app'
         dir('vote'){
-          sleep 60
           sh 'pip install --upgrade pip'
           sh 'pip install -r requirements.txt'
           sh 'nosetests -v'
