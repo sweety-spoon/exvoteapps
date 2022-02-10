@@ -207,9 +207,10 @@ pipeline {
             sh "chmod +x deploy.sh" 
             sh "scp -o StrictHostKeyChecking=no docker-compose.yml root@10.10.81.151:/root" 
             sh "scp -o StrictHostKeyChecking=no deploy.sh root@10.10.81.151:/root" 
-            sh 'ssh -o StrictHostKeyChecking=no root@10.10.81.151 "bash deploy.sh" '
-            sh 'ssh -o StrictHostKeyChecking=no root@10.10.81.151 "chmod +x deploy.sh " '
-            sh 'ssh -o StrictHostKeyChecking=no root@10.10.81.151 "bash deploy.sh" '
+            sh "rsync --perms --chmod=u+rwx,g+rwx,o+rwx deploy.sh root@10.10.81.151:/root/deploy.sh"
+            sh 'ssh -o StrictHostKeyChecking=no root@10.10.81.151 "./deploy.sh" '
+//             sh 'ssh -o StrictHostKeyChecking=no root@10.10.81.151 "chmod +x deploy.sh " '
+//             sh 'ssh -o StrictHostKeyChecking=no root@10.10.81.151 "bash deploy.sh" '
         }
     }
     
