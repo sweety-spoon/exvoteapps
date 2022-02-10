@@ -42,7 +42,6 @@ agent none
     stage("package"){
       agent any
       when{
-        branch 'master'
         changeset "**/worker/**"
       }
       steps{
@@ -58,7 +57,6 @@ agent none
         agent any
         when{
           changeset "**/worker/**"
-          branch 'master'
         }
         steps{
           echo 'Packaging worker app with docker'
